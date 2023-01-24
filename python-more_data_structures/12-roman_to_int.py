@@ -14,10 +14,12 @@ def roman_to_int(roman_string):
     if lenght == 1:
         return (conversion.get(roman_string[0]))
 
-    # if minimum 2 letter in string, compare value of letter index and index + 1
+    # if minimum 2 letter in string, compare value of
+    # letter index and index + 1
     for index in range(0, lenght):
         if index != lenght - 1:
-            if conversion.get(roman_string[index]) < conversion.get(roman_string[index + 1]):
+            if (conversion.get(roman_string[index]) <
+                    conversion.get(roman_string[index + 1])):
                 result -= conversion.get(roman_string[index])
             else:
                 result += conversion.get(roman_string[index])
