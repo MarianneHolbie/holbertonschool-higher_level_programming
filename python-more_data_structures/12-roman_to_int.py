@@ -3,7 +3,7 @@ def roman_to_int(roman_string):
     result = 0
 
     # test if string exist or is a string
-    if not roman_string or not str(roman_string):
+    if not roman_string or type(roman_string) != str:
         return (0)
     # create dictionary to associate letter and his value
     conversion = {'I': 1, 'V': 5, 'X': 10,
