@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" This module is a first creation of class that define a square with private size"""
+""" This module is a first creation of class that define a square
+    with private size"""
 
 
 class Square():
