@@ -12,5 +12,5 @@ class Square():
 
     """
 
-    def __init__(self, __size):
-        self.__size = None
+    def __init__(self, __size=0):
+        self.__size = __size
