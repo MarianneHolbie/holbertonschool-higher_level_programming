@@ -12,7 +12,7 @@ class Square():
     __size : integer, must be > 0
         size of the square, private attributes
 
-    __position : tuple position of square
+    __position : tuple position of square in 2D space
 
     Methods
     -------
@@ -42,7 +42,8 @@ class Square():
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
+        else:
+            self.__size = value
 
     @property
     def position(self):
@@ -66,7 +67,7 @@ class Square():
     def my_print(self):
         """ print the square with #"""
         if self.__size == 0:
-            print('')
+            print("")
 
         [print("") for i in range(0, self.__position[1])]
         for i in range(0, self.__size):
