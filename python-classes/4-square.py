@@ -11,11 +11,9 @@ class Square():
     ----------
     __size : integer, must be > 0
         size of the square, private attributes
-
      Methods
     -------
     area() : calculate the area of the square
-
     """
 
     def __init__(self, size=0):
@@ -26,10 +24,12 @@ class Square():
             raise ValueError("size must be >= 0")
         self.__size = size
 
+    @property
     def size(self):
         """ Getter method for size"""
         return (self.__size)
 
+    @size.setter
     def size(self, value):
         """ Setter method for size"""
         if type(value) != int:
