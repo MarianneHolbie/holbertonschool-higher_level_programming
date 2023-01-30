@@ -1,0 +1,37 @@
+===============================
+ How to Use 0-add_integer.py
+===============================
+
+This library is very simple, since it only has one function called
+``add_integer()``.
+
+Numbers
+=======
+
+``add_integer()`` returns the sum of its arguments.  
+
+::
+
+    >>> from 0-add_integer import add_integer
+    >>> add_integer(2, 3)
+    5
+
+It also works with floating-point values if they are casted to integer.
+
+::
+
+    >>> my_function(2.0, 3)
+    5
+
+Non-Numbers
+===========
+
+Because it is only possible to add 2 numbers, a and b must be integers (or float).
+
+::
+
+    >>> my_function('a', 3)
+    a must be an integer
+
+    >>> my_function(6, 'b')
+    a must be an integer
