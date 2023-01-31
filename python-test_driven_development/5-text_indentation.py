@@ -31,8 +31,8 @@ def text_indentation(text):
     while (i < len(text)):
 
         if text[i] in list_char:
-            print("{}\n".format(text[i]))
-            if text[i + 1] == " " and i + 1 < len(text):
+            print("\n")
+            while text[i + 1] == " " and i + 1 < len(text):
                 i += 1
         else:
             print("{}".format(text[i]), end="")
