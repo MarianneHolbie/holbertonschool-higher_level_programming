@@ -31,25 +31,24 @@ def matrix_divided(matrix, div):
     """
 
     new_matrix = []
-    len_row = len(matrix[0])
-    len_column = len(matrix[1])
+    len_matrix = len(matrix[0])
+    
 
-    if matrix == [] or not isinstance(matrix, list) or\
-            isinstance(matrix[0], list) or len_column == 0 or len_row == 0:
+    if matrix == [] or not isinstance(matrix, list):
         raise TypeError(
             'matrix must be a matrix (list of lists) of integers/floats')
 
     if not isinstance(div, (int, float)):
         raise TypeError('div must be a number')
 
-    if len_row != len_column:
-        raise TypeError('Each row of the matrix must have the same size')
-
     if div == 0:
         raise ZeroDivisionError('division by zero')
 
     for row in matrix:
         new_value = []
+        len_row = len(row)
+        if len_matrix != len_row:
+            raise TypeError('Each row of the matrix must have the same size')
         for element in row:
             if isinstance(element, (int, float)):
                 new_value.append(round(element/div, 2))
