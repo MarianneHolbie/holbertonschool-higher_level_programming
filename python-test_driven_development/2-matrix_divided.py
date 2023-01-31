@@ -54,6 +54,6 @@ def matrix_divided(matrix, div):
             else:
                 raise TypeError(
                     "matrix must be a matrix (list"
-                    "of lists) of integers/floats")
+                    " of lists) of integers/floats")
         new_matrix.append(new_value)
     return (new_matrix)
