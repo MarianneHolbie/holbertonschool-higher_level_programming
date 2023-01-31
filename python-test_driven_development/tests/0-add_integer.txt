@@ -8,11 +8,14 @@ This library is very simple, since it only has one function called
 Numbers
 =======
 
-``add_integer()`` returns the sum of its arguments.  
+``add_integer()`` returns the sum of 2 integer.  
 
 ::
 
-    >>> from 0-add_integer import add_integer
+    >>> add_integer =  __import__('0-add_integer').add_integer
+
+    Now use it:
+
     >>> add_integer(2, 3)
     5
 
@@ -20,7 +23,7 @@ It also works with floating-point values if they are casted to integer.
 
 ::
 
-    >>> my_function(2.0, 3)
+    >>> add_integer(2.0, 3)
     5
 
 Non-Numbers
@@ -30,8 +33,8 @@ Because it is only possible to add 2 numbers, a and b must be integers (or float
 
 ::
 
-    >>> my_function('a', 3)
-    a must be an integer
+    >>> add_integer('a', 3)
+    'a must be an integer'
 
-    >>> my_function(6, 'b')
-    a must be an integer
+    >>> add_integer(6, 'b')
+    'b must be an integer'
