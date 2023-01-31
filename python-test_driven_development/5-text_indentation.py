@@ -7,7 +7,8 @@
 
 def text_indentation(text):
     """
-    Fonction that print a text with 2 new lines after each of these characters: ., ? and :
+    Fonction that print a text with 2 new lines
+    after each of these characters: ., ? and :
 
     Args :
         text: string
@@ -16,7 +17,7 @@ def text_indentation(text):
         indented tring
 
     Raises:
-        Test TypeError 
+        Test TypeError
 
     """
     list_char = [".", "?", ":"]

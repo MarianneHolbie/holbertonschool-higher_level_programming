@@ -23,7 +23,7 @@ String
     <BLANKLINE>
     Fine thank you!
 
-Not String
+Not a String
 =======
 
 ``text_indentation()`` returns raise TypeError if text is not string
@@ -38,3 +38,15 @@ Not String
         raise TypeError("text must be a string")
     TypeError: text must be a string
 
+No Args
+=======
+
+``text_indentation()`` returns error if no args passed
+::
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+        File "./5-main.py", line 4, in <module>
+        text_indentation()
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+    
