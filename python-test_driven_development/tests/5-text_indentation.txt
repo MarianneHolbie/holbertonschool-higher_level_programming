@@ -1,0 +1,40 @@
+===============================
+ How to Use 5-text_indentation.py
+===============================
+
+This library is very simple, since it only has one function called
+``text_indentation()``.
+
+String
+=======
+
+``text_indentation()`` returns indented text
+
+::
+
+    >>> text_indentation =  __import__('5-text_indentation').text_indentation
+
+    Now use it:
+
+    >>> text_indentation("""This is a Test. How do you do? Fine thank you!""")
+    This is a Test.
+    <BLANKLINE>
+    How do you do?
+    <BLANKLINE>
+    Fine thank you!
+
+Not String
+=======
+
+``text_indentation()`` returns raise TypeError if text is not string
+
+::
+
+    >>> text_indentation(123456789)
+    Traceback (most recent call last):
+        File "./5-main.py", line 4, in <module>
+        text_indentation(text_indentation(123456789))
+        File "/holbertonschool-higher_level_programming/python-test_driven_development/5-text_indentation.py", line 26, in text_indentation
+        raise TypeError("text must be a string")
+    TypeError: text must be a string
+
