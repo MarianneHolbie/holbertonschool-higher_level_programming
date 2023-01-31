@@ -1,0 +1,34 @@
+===============================
+ How to Use 3-say_my_name.py
+===============================
+
+This library is very simple, since it only has one function called
+``say_my_name()``.
+
+Strings
+=======
+
+``say_my_name()`` returns My name is <first name> <last name>.  
+
+::
+
+    >>> say_my_name =  __import__('3-say_my_name').say_my_name
+
+    Now use it:
+
+    >>> say_my_name("Ali", "Baba")
+    My name is Ali Baba
+
+Not Strings
+=======
+
+`if first_name and last_name are not string, function `say_my_name()`` raise a TypeError
+
+::
+
+    >>> say_my_name(123, "Baba")
+    first_name must be a string
+
+    >>> say_my_name("Ali", 2.8)
+    last_name must be a string
+    
