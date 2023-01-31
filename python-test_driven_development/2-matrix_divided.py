@@ -34,7 +34,8 @@ def matrix_divided(matrix, div):
     len_row = len(matrix[0])
     len_column = len(matrix[1])
 
-    if matrix == [] or not isinstance(matrix, list):
+    if matrix == [] or not isinstance(matrix, list) or\
+            isinstance(matrix[0], list) or len_column == 0 or len_row == 0:
         raise TypeError(
             'matrix must be a matrix (list of lists) of integers/floats')
 
@@ -50,6 +51,11 @@ def matrix_divided(matrix, div):
     for row in matrix:
         new_value = []
         for element in row:
-            new_value.append(round(element/div, 2))
+            if isinstance(element, (int, float)):
+                new_value.append(round(element/div, 2))
+            else:
+                raise TypeError(
+                    'matrix must be a matrix (list of lists)',
+                    'of integers floats')
         new_matrix.append(new_value)
     return (new_matrix)
