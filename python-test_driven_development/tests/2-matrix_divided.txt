@@ -29,6 +29,14 @@ Result element are rounded to 2 decimal.
     >>> matrix_divided(matrix, 3)
     [[0.67, 1.33, 2.0], [2.67, 4.0, 5.33]]
 
+Matrix is a list of lists of integers and div is 'inf'.
+
+::
+
+    >>> matrix2 = [[0, 0, 0], [0, 0, 0]]
+    >>> matrix_divided(matrix2, float('inf'))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 Divide by zero
 ===========
 
