@@ -32,10 +32,6 @@ Not a String
 
     >>> text_indentation(123456789)
     Traceback (most recent call last):
-        File "./5-main.py", line 4, in <module>
-        text_indentation(text_indentation(123456789))
-        File "/holbertonschool-higher_level_programming/python-test_driven_development/5-text_indentation.py", line 26, in text_indentation
-        raise TypeError("text must be a string")
     TypeError: text must be a string
 
 No Args
@@ -46,7 +42,5 @@ No Args
 
     >>> text_indentation()
     Traceback (most recent call last):
-        File "./5-main.py", line 4, in <module>
-        text_indentation()
     TypeError: text_indentation() missing 1 required positional argument: 'text'
     
