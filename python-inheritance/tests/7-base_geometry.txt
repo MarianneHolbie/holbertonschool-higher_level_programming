@@ -55,6 +55,11 @@ If Value is not an integer
     Traceback (most recent call last):
     TypeError: rectangle must be an integer
 
+    >>> my_form.integer_validator("rectangle", True)
+    Traceback (most recent call last):
+    TypeError: rectangle must be an integer
+    
+
 If Value <= 0
 --------------------------------------- 
 
