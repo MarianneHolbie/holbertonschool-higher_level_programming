@@ -1,0 +1,76 @@
+===============================
+ How to Use 7-base_geometry.py
+===============================
+
+This module create a class BaseGeometry.
+
+``BaseGeometry``
+==================
+
+::
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Now use it (normaly no raise error or return): 
+
+::
+
+    >>> my_form = BaseGeometry()
+    >>> my_form.integer_validator("checkint", 98)
+
+Invalid number of arguments
+---------------------------------------
+
+::
+
+    >>> my_form.integer_validator()
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    >>> my_form.integer_validator("square")
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+If Value is not an integer
+---------------------------------------    
+
+::
+    >>> my_form.integer_validator("rectangle", None)
+    Traceback (most recent call last):
+    TypeError: rectangle must be an integer
+
+    >>> my_form.integer_validator("rectangle", "square")
+    Traceback (most recent call last):
+    TypeError: rectangle must be an integer
+
+    >>> my_form.integer_validator("rectangle", [12, 2, 8])
+    Traceback (most recent call last):
+    TypeError: rectangle must be an integer
+
+    >>> my_form.integer_validator("rectangle", (12, 5))
+    Traceback (most recent call last):
+    TypeError: rectangle must be an integer
+
+    >>> my_form.integer_validator("rectangle", {4, 16})
+    Traceback (most recent call last):
+    TypeError: rectangle must be an integer
+
+If Value <= 0
+--------------------------------------- 
+
+::
+    >>> my_form.integer_validator("height", 0)
+    Traceback (most recent call last):
+    ValueError: height must be greater than 0
+
+    >>> my_form.integer_validator("width", -12)
+    Traceback (most recent call last):
+    ValueError: width must be greater than 0
+   
+Empty method area
+---------------------------------------
+
+::
+    >>> my_form.area("height", 0)
+    Traceback (most recent call last):
+    Exception: area() is not implemented
