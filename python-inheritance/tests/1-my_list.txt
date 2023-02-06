@@ -1,0 +1,40 @@
+===============================
+ How to Use 1-my_list.py
+===============================
+
+This module is very simple, since it only had one class inherance of list and one function called
+``print_sorted()``.
+
+``MyList``
+============
+
+::
+
+    >>> MyList = __import__('1-my_list').MyList
+   
+
+Now use it (like a classic list with methods): 
+
+::
+
+    >>> numbers = MyList()
+    >>> numbers
+    []
+
+    >>> numbers.append(3)
+    >>> numbers
+    [3]
+
+    >>> numbers.append(12)
+    >>> numbers.append(2)
+    >>> numbers.append(25)
+    >>> numbers.append(8)
+    >>> numbers
+    [3, 12, 2, 25, 8]
+
+
+The class contains also a method called print_sorted: 
+this method can return sorted list element without modification of initial list
+
+    >>> numbers.print_sorted()
+    [2, 3, 8, 12, 25]
