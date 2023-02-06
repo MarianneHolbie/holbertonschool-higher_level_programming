@@ -71,6 +71,6 @@ Empty method area
 ---------------------------------------
 
 ::
-    >>> my_form.area("height", 0)
+    >>> my_form.area()
     Traceback (most recent call last):
     Exception: area() is not implemented
