@@ -18,6 +18,14 @@ class Rectangle(BaseGeometry):
             __height : height of the form
                 private
 
+        Method
+        ====================
+
+            area : calculate area of the rectangle
+
+            __str__ : return description of the rectangle
+
+
     """
 
     def __init__(self, width, height):
