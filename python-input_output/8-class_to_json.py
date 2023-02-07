@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Module to return dictionnary description 
+    Module to return dictionnary description
 """
 
 
