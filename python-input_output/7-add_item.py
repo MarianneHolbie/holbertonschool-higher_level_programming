@@ -18,7 +18,7 @@ path = Path('./add_item.json')
 # if file exist, append and not overwrite
 if path.is_file():
     my_obj = load_from_json_file(filename)
-    my_obj.append(sys.argv[1:])
+    my_obj = my_obj + sys.argv[1:]
     save_to_json_file(my_obj, filename)
 else:
     save_to_json_file(sys.argv[1:], filename)
