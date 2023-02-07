@@ -50,4 +50,4 @@ class Student:
             Function replace all attributes of the Student instance
         """
         for key, value in json.items():
-            self.__dict__[key]
+            self.__dict__[key] = value
