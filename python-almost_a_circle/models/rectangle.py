@@ -119,8 +119,11 @@ class Rectangle(Base):
     def display(self):
         """
             Function to print Rectangle with #
+            and taking care of x and y
         """
+        print('\n' * self.__y, end='')
         for i in range(self.__height):
+            print(' ' * self.__x, end='')
             print('#' * self.__width)
 
     def __str__(self):
