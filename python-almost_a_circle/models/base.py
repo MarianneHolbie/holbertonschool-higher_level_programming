@@ -72,8 +72,8 @@ class Base:
         """
             returns an instance with all attributes already set
         """
-        # create dummy form: square 8*8
-        dummy = cls(8, 8)
+        # create dummy form: square 2*2
+        dummy = cls(2, 2, 0, 0)
         # update value
         dummy.update(**dictionary)
         return (dummy)
