@@ -30,10 +30,33 @@ class Rectangle(Base):
         else:
             Rectangle.__nb_objects += 1
             self.id = Rectangle.__nb_objects
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        if isinstance(width, int):
+            self.__width = width
+        else:
+            raise TypeError("width must be an integer")
+        if width <= 0:
+            raise ValueError('width must be > 0')
+        if isinstance(height, int):
+            self.__height = height
+        else:
+            raise TypeError("height must be an integer")
+        if height <= 0:
+            raise ValueError('height must be > 0')
+        if isinstance(x, int):
+            if x < 0:
+                raise ValueError('x must be >= 0')
+            else:
+                self.__x = x
+        else:
+            raise TypeError("x must be an integer")
+
+        if isinstance(y, int):
+            if y < 0:
+                raise ValueError('x must be >= 0')
+            else:
+                self.__y = y
+        else:
+            raise TypeError("y must be an integer")
 
     @property
     def width(self):
