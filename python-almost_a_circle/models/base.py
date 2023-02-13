@@ -66,3 +66,14 @@ class Base:
             return ([])
         else:
             return (json.loads(json_string))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+            returns an instance with all attributes already set
+        """
+        # create dummy form: square 2*2
+        dummy = cls(2, 2)
+        # update value
+        dummy.update(**dictionary)
+        return (dummy)
