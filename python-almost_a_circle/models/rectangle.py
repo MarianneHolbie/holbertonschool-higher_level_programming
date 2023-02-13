@@ -16,6 +16,16 @@ class Rectangle(Base):
             __height : private instance, height of rectangle
             __x and __y : private instance, position in space of rectangle
 
+        Method
+        ---------
+            area : public, to calculate area
+
+            display : public, print graphic rectangle with #
+
+            __str__: print definition of rectangle
+
+            update: public, assign argument to each attribute
+
     """
 
     __nb_objects = 0
@@ -49,7 +59,6 @@ class Rectangle(Base):
                 self.__x = x
         else:
             raise TypeError("x must be an integer")
-
         if isinstance(y, int):
             if y < 0:
                 raise ValueError('y must be >= 0')
@@ -134,7 +143,7 @@ class Rectangle(Base):
                 format(self.id, self.__x, self.__y,
                        self.__width, self.__height))
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
             function that assigns argument to each attribute
         """
@@ -150,3 +159,16 @@ class Rectangle(Base):
                     self.__x = args[3]
                 if i == 4:
                     self.__y = args[4]
+        else:
+            if kwargs is not None:
+                for key, value in kwargs.items():
+                    if key == 'id':
+                        self.id = value
+                    if key == 'width':
+                        self.__width = value
+                    if key == 'height':
+                        self.__height = value
+                    if key == 'x':
+                        self.__x = value
+                    if key == 'y':
+                        self.__y = value
