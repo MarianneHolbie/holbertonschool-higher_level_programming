@@ -20,6 +20,8 @@ class Square(Rectangle):
 
             update : public, assigns attributes
 
+            to_dictionary : return dictionary representation of a Rectangle
+
     """
 
     def __init__(self, size, x=0, y=0, id=None):
@@ -75,3 +77,9 @@ class Square(Rectangle):
                         self.x = value
                     if key == 'y':
                         self.y = value
+
+    def to_dictionary(self):
+        """
+            construct dictionary representation of square
+        """
+        return (dict(id=self.id, size=self.size, x=self.x, y=self.y))
