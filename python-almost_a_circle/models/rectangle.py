@@ -52,7 +52,7 @@ class Rectangle(Base):
 
         if isinstance(y, int):
             if y < 0:
-                raise ValueError('x must be >= 0')
+                raise ValueError('y must be >= 0')
             else:
                 self.__y = y
         else:
