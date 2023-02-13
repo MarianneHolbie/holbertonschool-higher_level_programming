@@ -38,4 +38,4 @@ class Base:
             return ([])
         else:
             str_json = json.dumps(list_dictionaries)
-            return (str_json)
+            return (''.join(str_json))
