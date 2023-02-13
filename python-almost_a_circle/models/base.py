@@ -35,7 +35,6 @@ class Base:
             return JSON string representation of list_dictionaries
         """
         if not list_dictionaries or list_dictionaries is None:
-            return ([])
+            return ("[]")
         else:
-            str_json = json.dumps(list_dictionaries)
-            return (''.join(str_json))
+            return (json.dumps(list_dictionaries))
