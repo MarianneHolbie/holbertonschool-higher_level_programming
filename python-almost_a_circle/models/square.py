@@ -17,7 +17,7 @@ class Square(Rectangle):
         Method
         ---------
             __str__: print definition of square
-                   
+
     """
 
     def __init__(self, size, x=0, y=0, id=None):
