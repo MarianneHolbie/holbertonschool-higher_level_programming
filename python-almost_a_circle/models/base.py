@@ -4,6 +4,7 @@
 
 """
 import json
+import os
 
 
 class Base:
@@ -38,3 +39,20 @@ class Base:
             return ("[]")
         else:
             return (json.dumps(list_dictionaries))
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+            write Json string representation of list_obj in a file
+        """
+        filename = '{}.json'.format(cls.__name__)
+        resume_list = []
+
+        if not list_objs or list_objs is None:
+            resume_list = []
+        else:
+            for elmt in list_objs:
+                resume_list.append(elmt.to_dictionary())
+
+        with open(filename, 'w', encoding="utf-8") as f:
+            f.write(cls.to_json_string(resume_list))
