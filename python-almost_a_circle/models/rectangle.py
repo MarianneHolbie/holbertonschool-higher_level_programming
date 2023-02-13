@@ -6,7 +6,7 @@
 from models.base import Base
 
 
-class Rectangle:
+class Rectangle(Base):
     """
         class rectangle inherits from Base
 
