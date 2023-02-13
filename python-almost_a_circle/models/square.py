@@ -33,8 +33,8 @@ class Square(Rectangle):
     @size.setter
     def size(self, value):
         if isinstance(value, int):
-            Rectangle.__width = value
-            Rectangle.__height = value
+            self.width = value
+            self.height = value
         else:
             raise TypeError('width must be an integer')
         if value <= 0:
