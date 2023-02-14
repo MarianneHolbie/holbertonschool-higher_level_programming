@@ -4,7 +4,7 @@
 
 """
 import json
-import os
+from pathlib import Path
 
 
 class Base:
@@ -79,3 +79,26 @@ class Base:
         # update value
         dummy.update(**dictionary)
         return (dummy)
+
+    @classmethod
+    def load_from_file(cls):
+        """
+            return list of instance
+        """
+        # generate name of file
+        filename = '{}.json'.format(cls.__name__)
+        path = Path('./' + filename)
+        # empty struct : dict and list
+        form_list = []
+        list_form = []
+        # test if file exist
+        if path.is_file():
+            with open(filename, "r", encoding="utf-8") as f:
+                list_elements = f.read()
+                form_list = cls.from_json_string(list_elements)
+            for k in form_list:
+                new_form = cls.create(**k)
+                list_form.append(new_form)
+            return (list_form)
+        else:
+            return ([])
