@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """
     Package Base class : construction of Base class
-       
 """
 import json
-from pathlib import Path
 
 
 class Base:
@@ -43,7 +41,7 @@ class Base:
 
     def __init__(self, id=None):
         """ Init constructor to construct object of this class Base
-        
+
             Args:
                 __nb_objects : count of all object created
                 id : id of each object
@@ -101,12 +99,12 @@ class Base:
         """return list of instance, used previous method"""
         # generate name of file
         filename = '{}.json'.format(cls.__name__)
-        path = Path('./' + filename)
+
         # empty struct : dict and list
         form_list = []
         list_form = []
         # test if file exist
-        if path.is_file():
+        if filename:
             with open(filename, "r", encoding="utf-8") as f:
                 list_elements = f.read()
                 form_list = cls.from_json_string(list_elements)
