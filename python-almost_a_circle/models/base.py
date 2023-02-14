@@ -20,6 +20,8 @@ class Base:
         METHOD
         ==================
 
+            __init__ : constructor fo Base class
+
             @classMethod:
 
                 save_to_file : write json string in list_dictionary
