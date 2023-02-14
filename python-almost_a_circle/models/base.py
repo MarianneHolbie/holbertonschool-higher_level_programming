@@ -45,10 +45,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """
-            constructor of base class
-            count object
-        """
+        """constructor of base class"""
 
         if id is not None:
             self.id = id
@@ -58,9 +55,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """
-            return JSON string representation of list_dictionaries
-        """
+        """return JSON string representation of list_dictionaries"""
         if not list_dictionaries or list_dictionaries is None:
             return ("[]")
         else:
@@ -68,9 +63,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """
-            write Json string representation of list_obj in a file
-        """
+        """write Json string representation of list_obj in a file"""
         filename = '{}.json'.format(cls.__name__)
         resume_list = []
 
@@ -85,9 +78,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """
-            return list of the JSON string representation json_string
-        """
+        """return list of the JSON string representation json_string"""
         if not json_string or json_string is None:
             return ([])
         else:
@@ -95,9 +86,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """
-            returns an instance with all attributes already set
-        """
+        """returns an instance with all attributes already set"""
         # create dummy form: square 2*2
         dummy = cls(2, 2)
         dummy.x = 0
@@ -108,10 +97,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """
-            return list of instance
-            test if file exist with PATH module
-        """
+        """return list of instance"""
         # generate name of file
         filename = '{}.json'.format(cls.__name__)
         path = Path('./' + filename)
