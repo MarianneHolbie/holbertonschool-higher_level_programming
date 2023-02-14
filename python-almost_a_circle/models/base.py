@@ -11,17 +11,39 @@ class Base:
     """
         Base class
 
+        ATTRIBUTS
+        ==================
+            __nb_objects : private, count
+
+            id : id of each form
+
         METHOD
         ==================
 
-            to_json_string : static method to return json string representation
+            @classMethod:
+
+                save_to_file : write json string in list_dictionary
+
+                create: create instance of subclasse and update
+                        value with **dict
+
+                load_from_file: load file of instance subclass, extract
+                                form and create
+
+            @StaticMethod:
+
+                to_json_string : static method to return json string
+                                 representation
+
+                from_json_string : return list of the JSON string
+                                   representation json_string
 
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
         """
-            constructor
+            constructor of base class
         """
 
         if id is not None:
