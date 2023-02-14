@@ -98,7 +98,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """return list of instance"""
+        """return list of instance, used previous method"""
         # generate name of file
         filename = '{}.json'.format(cls.__name__)
         path = Path('./' + filename)
