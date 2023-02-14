@@ -42,7 +42,12 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """ Init constructor to construct object of this class Base"""
+        """ Init constructor to construct object of this class Base
+        
+            Args:
+                __nb_objects : count of all object created
+                id : id of each object
+        """
         if id is not None:
             self.id = id
         else:
