@@ -1,18 +1,7 @@
 #!/usr/bin/python3
 """
     Package Base class
-    Module to create a base class with classmethod and staticmethod
-
-"""
-import json
-from pathlib import Path
-
-
-class Base:
-    """
-        Base class
-
-        ATTRIBUTS
+       ATTRIBUTS
         ==================
             __nb_objects : private, count
 
@@ -40,7 +29,14 @@ class Base:
 
                 from_json_string : return list of the JSON string
                                    representation json_string
+"""
+import json
+from pathlib import Path
 
+
+class Base:
+    """
+        Base class
     """
     __nb_objects = 0
 
