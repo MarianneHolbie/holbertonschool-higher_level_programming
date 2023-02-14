@@ -50,6 +50,12 @@ class Test_Rectangle_attributRaise(unittest.TestCase):
             rect3 = Rectangle(-2, 8, 0, 0)
         self.assertEqual(str(e.exception), 'width must be > 0')
 
+    def test__widthValueError(self):
+        # tests width = 0
+        with self.assertRaises(ValueError) as e:
+            rect3 = Rectangle(0, 8, 0, 0)
+        self.assertEqual(str(e.exception), 'width must be > 0')
+
     def test__heightTypeError(self):
         # tests height not int
         with self.assertRaises(TypeError) as e:
@@ -60,6 +66,12 @@ class Test_Rectangle_attributRaise(unittest.TestCase):
         # tests height negativ number
         with self.assertRaises(ValueError) as e:
             rect4 = Rectangle(2, -8, 0, 0)
+        self.assertEqual(str(e.exception), 'height must be > 0')
+
+    def test__heightValueError(self):
+        # tests height = 0
+        with self.assertRaises(ValueError) as e:
+            rect4 = Rectangle(2, 0, 0, 0)
         self.assertEqual(str(e.exception), 'height must be > 0')
 
     def test__xTypeError(self):
@@ -221,6 +233,36 @@ class Test_Base_method(unittest.TestCase):
         rect14_dict = rect14.to_dictionary()
         rect15 = Rectangle.create(**rect14_dict)
         self.assertNotEqual(rect15, rect14)
+
+    def test_RectangleSaveToFileEmpty(self):
+        # save to file if list_obj is empty
+        list_objs = []
+        self.assertEqual(Rectangle.save_to_file(list_objs), None)
+
+    def test_RectangleSaveToFileNone(self):
+        # save to file if no list_obj
+        list_objs = None
+        self.assertEqual(Rectangle.save_to_file(None), None)
+
+    def test_OneRectangleSaveToFile(self):
+        # save 1 rect to file
+        rect16 = Rectangle(12, 6, 2, 4, 8)
+        Rectangle.save_to_file([rect16])
+        with open("Rectangle.json", "r") as file:
+            self.assertTrue(len(file.read()) == 53)
+
+    def test_TwoRectangleSaveToFile(self):
+        # save 2 rect to file
+        rect16 = Rectangle(12, 6, 2, 4, 8)
+        rect17 = Rectangle(24, 48, 16, 8, 25)
+        Rectangle.save_to_file([rect16, rect17])
+        with open("Rectangle.json", "r") as file:
+            self.assertTrue(len(file.read()) == 109)
+
+    def test_NoArgSaveToFile(self):
+        # if no args
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
 
 
 if __name__ == '__main__':
