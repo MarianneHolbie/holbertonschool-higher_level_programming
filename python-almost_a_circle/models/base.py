@@ -1,7 +1,16 @@
 #!/usr/bin/python3
 """
-    Package Base class
-       ATTRIBUTS
+    Package Base class : construction of Base class
+       
+"""
+import json
+from pathlib import Path
+
+
+class Base:
+    """
+        Base class
+        ATTRIBUTS
         ==================
             __nb_objects : private, count
 
@@ -29,14 +38,6 @@
 
                 from_json_string : return list of the JSON string
                                    representation json_string
-"""
-import json
-from pathlib import Path
-
-
-class Base:
-    """
-        Base class
     """
     __nb_objects = 0
 
