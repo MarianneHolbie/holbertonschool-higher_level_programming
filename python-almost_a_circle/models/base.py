@@ -45,6 +45,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """ Init constructor to construct object of this class Base"""
         if id is not None:
             self.id = id
         else:
