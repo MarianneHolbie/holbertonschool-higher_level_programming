@@ -47,6 +47,7 @@ class Base:
     def __init__(self, id=None):
         """
             constructor of base class
+            count object
         """
 
         if id is not None:
