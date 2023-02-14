@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
     Package Base class
+    Module to create a base class with classmethod and staticmethod
 
 """
 import json
@@ -108,6 +109,7 @@ class Base:
     def load_from_file(cls):
         """
             return list of instance
+            test if file exist with PATH module
         """
         # generate name of file
         filename = '{}.json'.format(cls.__name__)
