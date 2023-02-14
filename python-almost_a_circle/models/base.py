@@ -3,6 +3,7 @@
     Package Base class : construction of Base class
 """
 import json
+import os
 
 
 class Base:
@@ -104,7 +105,7 @@ class Base:
         form_list = []
         list_form = []
         # test if file exist
-        if filename:
+        if os.path.isfile(filename):
             with open(filename, "r", encoding="utf-8") as f:
                 list_elements = f.read()
                 form_list = cls.from_json_string(list_elements)
