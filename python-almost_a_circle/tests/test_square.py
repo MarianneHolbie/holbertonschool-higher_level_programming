@@ -6,6 +6,7 @@
 import unittest
 from unittest.mock import patch
 import io
+import os
 import sys
 from pathlib import Path
 from models.base import Base
@@ -227,6 +228,26 @@ class Test_Base_method(unittest.TestCase):
         sq16 = Square.create(**sq15_dict)
         self.assertNotEqual(sq15, sq16)
 
+class Test_Base_MethodeWithFile(unittest.TestCase):
+    # test method class Base save to file
+    # before testing, remove any create file
+
+    @classmethod
+    def tearDown(self):
+        """Delete file"""
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Base.json")
+        except IOError:
+            pass
+
     def test_SquareSaveToFileEmpty(self):
         # save to file if list_obj is empty
         Square.save_to_file([])
@@ -237,7 +258,7 @@ class Test_Base_method(unittest.TestCase):
         # save to file if None as Arg
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
-            self.assertEqual("[]", file.read())
+            self.assertEqual('[]', file.read())
 
     def test_OneSquareSaveToFile(self):
         # save 1 rect to file
@@ -263,7 +284,7 @@ class Test_Base_method(unittest.TestCase):
     def test_SquareLoadFromFileNoFile(self):
         # if file doesn't exist
         answer = Square.load_from_file()
-        path = Path('square.json')
+        path = Path('Square.json')
         self.assertFalse(path.is_file())
 
     def test_SquareLoadFromFileExistFile(self):

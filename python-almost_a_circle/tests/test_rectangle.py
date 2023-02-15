@@ -4,8 +4,8 @@
 """
 
 import unittest
-from unittest.mock import patch
 from pathlib import Path
+import os
 import io
 import sys
 from models.base import Base
@@ -156,7 +156,7 @@ class Test_Rectangle_method(unittest.TestCase):
         self.assertEqual("\n#\n#\n", capture.getvalue())
     
     def test_RectangleDisplayOneArg(self):
-        # return display if  one Arg
+        # return display if one Arg
         rect11 = Rectangle(1, 2, 0, 1)
         with self.assertRaises(TypeError):
             rect11.display(12)
@@ -228,7 +228,7 @@ class Test_Rectangle_method(unittest.TestCase):
         self.assertEqual("[Rectangle] (48) 16/2 - 2/24", str(rect13))
 
 
-class Test_Base_method(unittest.TestCase):
+class Test_Base_Create(unittest.TestCase):
     # test method class Base to create
 
     def test_createRectangle(self):
@@ -255,13 +255,33 @@ class Test_Base_method(unittest.TestCase):
         rect15 = Rectangle.create(**rect14_dict)
         self.assertNotEqual(rect15, rect14)
 
+class Test_Base_MethodeWithFile(unittest.TestCase):
+    # test method class Base save to file
+    # before testing, remove any create file
+
+    @classmethod
+    def tearDown(self):
+        """Delete file"""
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Base.json")
+        except IOError:
+            pass
+
     def test_RectangleSaveToFileNone(self):
         # save to file if no list_obj
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             self.assertTrue("[]", file.read())
 
-    def test_rectangle_save_to_file_none(self):
+    def test_RectangleSaveToFile_none(self):
         # test2 save to file if no list_obj
         self.assertEqual(Rectangle.save_to_file(None), None)
 
@@ -271,7 +291,7 @@ class Test_Base_method(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             self.assertTrue("[]", file.read())
 
-    def test_rectangle_save_to_file_empty(self):
+    def test_RectangleSaveToFile_empty(self):
         # test2 save to file if empty list_obj
         self.assertEqual(Rectangle.save_to_file([]), None)
 
@@ -299,7 +319,7 @@ class Test_Base_method(unittest.TestCase):
         # if file doesn't exist
         answer = Rectangle.load_from_file()
         path = Path('Rectangle.json')
-        self.assertTrue(path.is_file())
+        self.assertFalse(path.is_file())
 
     def test_RectangleLoadFromFileExistFile(self):
         # if file exist
