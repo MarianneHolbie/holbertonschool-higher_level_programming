@@ -97,10 +97,10 @@ class Test_Square_attributRaise(unittest.TestCase):
             sq4 = Square(2, -8)
         self.assertEqual(str(e.exception), 'x must be >= 0')
 
-    def test_SquareYTypeError(self):
-        # tests y not int
-        rsq5 = Square(2, "8")
-        self.assertRaisesRegex(TypeError, 'x must be an integer')
+    def test_SquareXTypeError(self):
+        # tests x not int
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            Square(2, "8")
 
     def test_SquareYValueError(self):
         # tests x negativ number
