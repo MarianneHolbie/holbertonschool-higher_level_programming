@@ -134,6 +134,12 @@ class Test_Rectangle_method(unittest.TestCase):
         rect11 = Rectangle(1, 2)
         capture = Test_Rectangle_method.captureOutput(rect11, "display")
         self.assertEqual("#\n#\n", capture.getvalue())
+        self.assertEqual(rect11.x, 0)
+        self.assertEqual(rect11.y, 0)
+
+    def test_rectangle_display(self):
+        rect = Rectangle(3, 2, 0, 0)
+        self.assertEqual(rect.display(), None)
 
     def test_display(self):
         # normal return display method without y
@@ -241,11 +247,19 @@ class Test_Base_method(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             self.assertTrue("[]", file.read())
 
+    def test_rectangle_save_to_file_none(self):
+        # test2 save to file if no list_obj
+        self.assertEqual(Rectangle.save_to_file(None), None)
+
     def test_RectangleSaveToFileEmpty(self):
         # save to file if empty list_obj
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertTrue("[]", file.read())
+
+    def test_rectangle_save_to_file_empty(self):
+        # test2 save to file if empty list_obj
+        self.assertEqual(Rectangle.save_to_file([]), None)
 
     def test_OneRectangleSaveToFile(self):
         # save 1 rect to file
@@ -280,6 +294,7 @@ class Test_Base_method(unittest.TestCase):
         Rectangle.save_to_file([rect18, rect19])
         answer = Rectangle.load_from_file()
         self.assertTrue(all(type(form)) == Rectangle for form in answer)
+
 
 if __name__ == '__main__':
     unittest.main()
