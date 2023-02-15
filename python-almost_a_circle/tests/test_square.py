@@ -229,14 +229,15 @@ class Test_Base_method(unittest.TestCase):
 
     def test_SquareSaveToFileEmpty(self):
         # save to file if list_obj is empty
-        list_objs = []
-        self.assertEqual(Square.save_to_file(list_objs), None)
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual("[]", file.read())
 
     def test_SquareSaveToFileNone(self):
         # save to file if None as Arg
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
-            self.assertTrue("[]", file.read())
+            self.assertEqual("[]", file.read())
 
     def test_OneSquareSaveToFile(self):
         # save 1 rect to file
