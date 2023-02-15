@@ -129,7 +129,7 @@ class Test_Rectangle_method(unittest.TestCase):
         self.assertEqual(Rectangle.__str__(rect10),
                          "[Rectangle] (8) 0/5 - 2/3")
 
-    def test_display(self):
+    def test_RectangleDisplayWithoutXY(self):
         # normal return display method without x, y
         rect11 = Rectangle(1, 2)
         capture = Test_Rectangle_method.captureOutput(rect11, "display")
@@ -137,15 +137,29 @@ class Test_Rectangle_method(unittest.TestCase):
         self.assertEqual(rect11.x, 0)
         self.assertEqual(rect11.y, 0)
 
-    def test_rectangle_display(self):
+    def test_RectangleDisplayZeroXY(self):
+        # normal return display method without x and y
         rect = Rectangle(3, 2, 0, 0)
-        self.assertEqual(rect.display(), None)
+        capture = Test_Rectangle_method.captureOutput(rect, "display")
+        self.assertEqual('###\n###\n', capture.getvalue())
 
-    def test_display(self):
-        # normal return display method without y
+    def test_RectangleDisplayXonly(self):
+        # normal return display method with only x
         rect11 = Rectangle(1, 2, 4)
         capture = Test_Rectangle_method.captureOutput(rect11, "display")
         self.assertEqual("    #\n    #\n", capture.getvalue())
+
+    def test_RectangleDisplayYonly(self):
+        # normal return display method with only y
+        rect11 = Rectangle(1, 2, 0, 1)
+        capture = Test_Rectangle_method.captureOutput(rect11, "display")
+        self.assertEqual("\n#\n#\n", capture.getvalue())
+    
+    def test_RectangleDisplayOneArg(self):
+        # return display if  one Arg
+        rect11 = Rectangle(1, 2, 0, 1)
+        with self.assertRaises(TypeError):
+            rect11.display(12)
 
     def test_toDictionaryOutput(self):
         # normal return dict
@@ -287,7 +301,7 @@ class Test_Base_method(unittest.TestCase):
         path = Path('Rectangle.json')
         self.assertTrue(path.is_file())
 
-    def test_SquareLoadFromFileExistFile(self):
+    def test_RectangleLoadFromFileExistFile(self):
         # if file exist
         rect18 = Rectangle(12, 6, 2, 4, 54)
         rect19 = Rectangle(48, 16, 8, 25, 78)
