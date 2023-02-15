@@ -5,6 +5,7 @@
 
 import unittest
 from unittest.mock import patch
+from pathlib import Path
 import io
 import sys
 from models.base import Base
@@ -234,15 +235,17 @@ class Test_Base_method(unittest.TestCase):
         rect15 = Rectangle.create(**rect14_dict)
         self.assertNotEqual(rect15, rect14)
 
-    def test_RectangleSaveToFileEmpty(self):
-        # save to file if list_obj is empty
-        list_objs = []
-        self.assertEqual(Rectangle.save_to_file(list_objs), None)
-
     def test_RectangleSaveToFileNone(self):
         # save to file if no list_obj
-        list_objs = None
-        self.assertEqual(Rectangle.save_to_file(None), None)
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertTrue("[]", file.read())
+
+    def test_RectangleSaveToFileEmpty(self):
+        # save to file if empty list_obj
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertTrue("[]", file.read())
 
     def test_OneRectangleSaveToFile(self):
         # save 1 rect to file
@@ -264,6 +267,19 @@ class Test_Base_method(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
 
+    def test_RectangleLoadFromFileNoFile(self):
+        # if file doesn't exist
+        answer = Rectangle.load_from_file()
+        path = Path('Rectangle.json')
+        self.assertTrue(path.is_file())
+
+    def test_SquareLoadFromFileExistFile(self):
+        # if file exist
+        rect18 = Rectangle(12, 6, 2, 4, 54)
+        rect19 = Rectangle(48, 16, 8, 25, 78)
+        Rectangle.save_to_file([rect18, rect19])
+        answer = Rectangle.load_from_file()
+        self.assertTrue(all(type(form)) == Rectangle for form in answer)
 
 if __name__ == '__main__':
     unittest.main()

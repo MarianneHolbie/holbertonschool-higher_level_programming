@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 import io
 import sys
+from pathlib import Path
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -80,9 +81,39 @@ class Test_Square_attributRaise(unittest.TestCase):
             sq3 = Square(-2)
         self.assertEqual(str(e.exception), 'width must be > 0')
 
+    def test_sizeZeroValueError(self):
+        # tests size negativ number
+        with self.assertRaises(ValueError) as e:
+            sq3 = Square(0)
+        self.assertEqual(str(e.exception), 'width must be > 0')
+
     def test_SquareNoArg(self):
         with self.assertRaises(TypeError):
             Square()
+
+    def test_SquareXValueError(self):
+        # tests x negativ number
+        with self.assertRaises(ValueError) as e:
+            sq4 = Square(2, -8)
+        self.assertEqual(str(e.exception), 'x must be >= 0')
+
+    def test_SquareYTypeError(self):
+        # tests y not int
+        with self.assertRaises(TypeError) as e:
+            rsq5 = Square(2, "8", 5)
+        self.assertEqual(str(e.exception), 'x must be an integer')
+
+    def test_SquareYValueError(self):
+        # tests x negativ number
+        with self.assertRaises(ValueError) as e:
+            sq4 = Square(2, 4, -8)
+        self.assertEqual(str(e.exception), 'y must be >= 0')
+
+    def test_SquareYTypeError(self):
+        # tests y not int
+        with self.assertRaises(TypeError) as e:
+            rsq5 = Square(2, 8, "5")
+        self.assertEqual(str(e.exception), 'y must be an integer')
 
     def test_SquareFiveArgs(self):
         # if 5 Args to create square
@@ -203,9 +234,10 @@ class Test_Base_method(unittest.TestCase):
         self.assertEqual(Square.save_to_file(list_objs), None)
 
     def test_SquareSaveToFileNone(self):
-        # save to file if no list_obj
-        list_objs = None
-        self.assertEqual(Square.save_to_file(None), None)
+        # save to file if None as Arg
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertTrue("[]", file.read())
 
     def test_OneSquareSaveToFile(self):
         # save 1 rect to file
@@ -223,9 +255,24 @@ class Test_Base_method(unittest.TestCase):
             self.assertTrue(len(file.read()) == 80)
 
     def test_NoArgSaveToFile(self):
-        # if no args
-        with self.assertRaises(TypeError):
-            Square.save_to_file()
+        # save to file if empty list as Arg
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertTrue("[]", file.read())
+
+    def test_SquareLoadFromFileNoFile(self):
+        # if file doesn't exist
+        answer = Square.load_from_file()
+        path = Path('square.json')
+        self.assertFalse(path.is_file())
+
+    def test_SquareLoadFromFileExistFile(self):
+        # if file exist
+        sq17 = Square(12, 6, 2, 4)
+        sq18 = Square(48, 16, 8, 25)
+        Square.save_to_file([sq17, sq18])
+        answer = Square.load_from_file()
+        self.assertTrue(all(type(form)) == Square for form in answer)
 
 
 if __name__ == '__main__':
