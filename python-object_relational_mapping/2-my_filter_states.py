@@ -35,8 +35,9 @@ if __name__ == '__main__':
     cur.execute(querry.format(search_name))
 
     # display
-    search_state = cur.fetchone()
-    print(search_state)
+    search_state = cur.fetchall()
+    for state in search_state:
+        print(state)
 
     # close cursor & db
     cur.close()
