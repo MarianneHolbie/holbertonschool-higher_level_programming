@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     # executing MySQL Queries in Python
     cur.execute("SELECT * FROM states WHERE states.name \
-                LIKE 'N%' ORDER BY states.id ASC")
+                LIKE BINARY 'N%' ORDER BY states.id ASC")
 
     # display
     all_statesN = cur.fetchall()
