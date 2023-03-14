@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     # delete object with name containing letter a
     session.query(State).filter(State.name.like('%a%'))\
-        .delete()
+        .delete(synchronize_session=False)
     session.commit()
 
     session.close()
