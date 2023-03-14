@@ -43,7 +43,7 @@ if __name__ == '__main__':
     sep = ""
     for cities in all_cities:
         result = result + sep + cities[0]
-        sep =", "
+        sep = ", "
     print(result)
 
     # close cursor & db
