@@ -31,8 +31,8 @@ if __name__ == '__main__':
 
     # executing MySQL Queries in Python
     querry = """SELECT * FROM states WHERE name \
-                = %s ORDER BY states.id ASC"""
-    cur.execute(querry, [search_name])
+                LIKE BINARY '%{}' ORDER BY states.id ASC"""
+    cur.execute(querry.format(search_name))
 
     # display
     search_state = cur.fetchone()
