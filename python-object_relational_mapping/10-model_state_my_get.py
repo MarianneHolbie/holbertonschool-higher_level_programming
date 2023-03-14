@@ -7,8 +7,7 @@
             mysql password = pswd
             database name = db_name
             state_name_to_search = search_name
-    SORTED BY :
-        ASC states.id
+
 """
 
 import sys
@@ -40,7 +39,7 @@ if __name__ == "__main__":
     session = Session()
 
     # query + construct string response
-    # if no answer print Nothing
+    # if no answer print Not found
     query = session.query(State)\
         .filter(State.name == search_name).first()
     if query is not None:
