@@ -3,9 +3,9 @@
     Script to list all State object from database hbtn_0e_0_usa
 
     ARGUMENTS :
-            mysql username
-            mysql password
-            database name
+            mysql username = user
+            mysql password = pswd
+            database name = db_name
     SORTED BY :
         ASC states.id
 """
@@ -16,12 +16,17 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
 if __name__ == "__main__":
+    # Recover argument from user
+    user = sys.argv[1]
+    pswd = sys.argv[2]
+    db_name = sys.argv[3]
+
     # create bd
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'
-        .format(sys.argv[1],
-                sys.argv[2],
-                sys.argv[3]),
+        .format(user,
+                pswd,
+                db_name),
         pool_pre_ping=True
     )
     # function to create all tables in the bd engine
