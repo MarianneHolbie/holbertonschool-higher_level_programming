@@ -6,6 +6,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from model_state import Base
 
+
 class City(Base):
     """
         class City links to the MySQL table cities
@@ -35,6 +36,5 @@ class City(Base):
     state_id = Column(
         Integer,
         ForeignKey('states.id'),
-        nullable=False        
+        nullable=False
     )
-    
