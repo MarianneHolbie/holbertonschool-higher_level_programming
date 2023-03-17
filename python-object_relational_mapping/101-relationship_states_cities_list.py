@@ -14,7 +14,7 @@ import sys
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 from relationship_city import City
-from relationship_state import Base, State
+from relationship_state import State
 
 
 if __name__ == "__main__":
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     session = sessionmaker(bind=engine)()
 
     # query : table State with all State by asc order
-    query = session.query(State).order_by(State.id.asc()).all()
+    query = session.query(State).order_by(State.id.asc())
     # each row contain state.id, state.name, state.cities (linked to City table)
     for state in query:
         print('{}: {}'.format(state.id, state.name))
