@@ -38,12 +38,12 @@ if __name__ == "__main__":
     session = sessionmaker(bind=engine)()
 
     # query : table State with all State by asc order
-    query = session.query(State).outerjoin(City).order_by(State.id.asc()).all()
+    query = session.query(State).order_by(State.id.asc()).all()
     # each row contain state.id, state.name, state.cities (linked to City table)
     for state in query:
-        print("{}: {}".format(state.id, state.name))
+        print('{}: {}'.format(state.id, state.name))
         # for each column state.cities access to linked city.id and city.name
         for city in state.cities:
-            print("\t{}: {}".format(city.id, city.name))
+            print('\t{}: {}'.format(city.id, city.name))
 
     session.close()
