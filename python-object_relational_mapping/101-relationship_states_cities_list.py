@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     # query : table State with all State by asc order
     query = session.query(State).order_by(State.id.asc())
-    # each row contain state.id, state.name, state.cities (linked to City table)
+    # each row contain state.id, state.name, state.cities (linked City table)
     for state in query:
         print('{}: {}'.format(state.id, state.name))
         # for each column state.cities access to linked city.id and city.name
