@@ -32,7 +32,6 @@ if __name__ == "__main__":
         pool_pre_ping=True
     )
 
-
     # create session to save in bd
     session = sessionmaker(bind=engine)()
 
