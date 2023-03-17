@@ -41,7 +41,7 @@ if __name__ == "__main__":
     new_state = State(name='California')
     new_city = City(name='San Francisco')
     # link new state and new city + save session
-    new_state.city.append(new_city)
+    new_state.cities.append(new_city)
     session.add(new_state)
     session.commit()
 

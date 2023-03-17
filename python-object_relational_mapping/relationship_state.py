@@ -41,7 +41,7 @@ class State(Base):
         String(128),
         nullable=False
     )
-    city = relationship(
+    cities = relationship(
         "City",
         cascade="all, delete",
         back_populates="state"
