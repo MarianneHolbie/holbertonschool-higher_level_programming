@@ -31,8 +31,7 @@ if __name__ == "__main__":
                 db_name),
         pool_pre_ping=True
     )
-    # function to create all tables in the bd engine
-    Base.metadata.create_all(engine)
+
 
     # create session to save in bd
     session = sessionmaker(bind=engine)()
