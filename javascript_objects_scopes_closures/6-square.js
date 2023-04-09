@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+// rename Square to pastSquare to use inheritance without conflict
 const pastSquare = require('./5-square.js');
 
 // create class Square inherit from Rectangle
