@@ -1,9 +1,9 @@
 #!/usr/bin/node
 
-const Rectangle = require('./4-rectangle');
+const pastSquare = require('./5-square.js');
 
 // create class Square inherit from Rectangle
-class Square extends Rectangle {
+class Square extends pastSquare {
   constructor (size) {
     super(size, size);
   }
