@@ -2,7 +2,7 @@
 
 const Rectangle = require('./4-rectangle');
 
-// create class Rectangle
+// create class Square inherit from Rectangle
 class Square extends Rectangle {
   constructor (size) {
     super(size, size);
