@@ -1,0 +1,26 @@
+#!/usr/bin/node
+
+const Rectangle = require('./4-rectangle');
+
+// create class Square inherit from Rectangle
+class Square extends Rectangle {
+  constructor (size) {
+    super(size, size);
+  }
+
+  // prints the square using C
+  charPrint (c) {
+    // charUsed char used to print, if not : default 'X'
+    let charUsed = 'X';
+    if (c !== undefined) {
+      charUsed = c;
+    }
+    // use this.width or this.height to print
+    for (let i = 0; i < this.width; i++) {
+      console.log(charUsed.repeat(this.width));
+    }
+  }
+}
+
+// export class to be used on other file
+module.exports = Square;
