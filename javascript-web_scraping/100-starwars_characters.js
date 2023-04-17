@@ -1,7 +1,6 @@
 #!/usr/bin/node
 
 // Include module
-const { log } = require('console');
 const process = require('process');
 const request = require('request');
 
@@ -10,15 +9,16 @@ const args = process.argv;
 // construct request url by adding id film
 const URL = 'https://swapi-api.hbtn.io/api/films/' + args[2];
 
-// print title of a Star Wars movie where episode number
+// print all characters of one episode
 request.get(URL, (err, response, body) => {
   if (err) {
     console.error('error', err);
   } else {
-    // print title of given episode number
+    // stock all url of characters
     const char = JSON.parse(body).characters;
 
     for (const people of char) {
+    // get the name of each characters by get with url
       request.get(people, (err, response, body) => {
         if (err) {
           console.error('error', err);
