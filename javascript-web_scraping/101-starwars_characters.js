@@ -9,7 +9,7 @@ const args = process.argv;
 // construct request url by adding id film
 const URL = 'https://swapi-api.hbtn.io/api/films/' + args[2];
 
-// print all characters of one episode
+// print all characters of one episode in rigth order
 request.get(URL, (err, response, body) => {
   if (err) {
     console.error('error', err);
